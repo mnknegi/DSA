@@ -25,7 +25,7 @@ int main() {
 */
 
 // pointer to a array
-
+/*
 int main() {
     int A[5] = {2,4,6,8,10};
     int *p;
@@ -37,4 +37,27 @@ int main() {
     }
 
     return  0;
+}
+*/
+
+// Array created in Heap
+
+int main() {
+    int *p;
+//    p = (int *)malloc(5 * sizeof(int));       // C style allocating of memory in Heap.
+    p = new int[5];                             // C++ stype allocation of memory in Heap.
+
+    p[0] = 2;
+    p[1] = 4;
+    p[2] = 6;
+    p[3] = 8;
+    p[4] = 10;
+
+    for(int i = 0; i < 5; i++)
+        cout<<p[i]<<endl;
+
+//    free(p);                                    // release memory in Heap in C.
+    delete [] p;                                  // release memory in Heap in C++;
+
+    return 0;
 }
