@@ -40,7 +40,7 @@ int main() {
 }
 */
 
-// Array created in Heap
+// Use of malloc
 
 int main() {
     int *p;
