@@ -118,6 +118,28 @@ final class DoublyLinkedList {
          */
     }
 
+    // set
+    func setNodeValue(_ value: Int, at index: Int) {
+        if index < 0 || index >= self.length {
+            print("Index out_of_bound.")
+            return
+        }
+
+        if self.length == 0 {
+            return
+        }
+
+        if self.length == 1 {
+            self.head?.value = value
+        } else {
+            var temp = self.head
+            for indx in 0..<index {
+                temp = temp?.next
+            }
+            temp?.value = value
+        }
+    }
+
     func printList() {
         var temp = self.head
         while(temp != nil) {
@@ -159,6 +181,8 @@ dll.append(0)
 dll.append(1)
 dll.append(2)
 let node = dll.getNode(at: 0)
-print(node?.value)
+//print(node?.value)
 
-//dll.printList()
+dll.setNodeValue(3, at: 1)
+
+dll.printList()
