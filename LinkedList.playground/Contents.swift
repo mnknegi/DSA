@@ -223,6 +223,27 @@ final class LinkedList {
         self.length -= 1
     }
 
+    func reverseList() {
+        if self.length == 0 || self.length == 1 {
+            return
+        }
+
+        // reverse the extreme nodes.
+        var temp = self.head
+        self.head = tail
+        self.tail = temp
+
+        var before: Node? = nil
+        var after = temp?.next
+        for index in 0..<length {
+            after = temp?.next
+            temp?.next = before
+            before = temp
+            temp = after
+        }
+
+    }
+
     // print list
     func printList() {
         var temp = head
@@ -289,4 +310,15 @@ ll.delete(at: 4)
 ll.delete(at: 0)
 ll.delete(at: 4)
 ll.delete(at: 1)
+
+// reverse
+ll.removeLast()
+ll.removeLast()
+ll.append(1)
+ll.append(2)
+ll.append(3)
+ll.append(4)
+ll.append(5)
+ll.reverseList()
+
 ll.printList()
