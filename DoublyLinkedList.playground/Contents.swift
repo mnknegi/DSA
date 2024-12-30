@@ -140,6 +140,71 @@ final class DoublyLinkedList {
         }
     }
 
+    // insert
+    func insert(_ value: Int, at index: Int) {
+        if index < 0 || index >= self.length {
+            print("Index out_of_bound.")
+            return
+        }
+
+        let newNode = Node(value)
+        if self.length == 0 {
+            prepend(value)
+            return
+        }
+
+        if index == self.length {
+            append(value)
+            return
+        }
+
+        var temp = self.head
+        for indx in 0..<index {
+            temp = temp?.next
+        }
+        var pre = temp?.prev
+        pre?.next = newNode
+        newNode.prev = pre
+        temp?.prev = newNode
+        newNode.next = temp
+        self.length += 1
+    }
+
+    // remove
+    func remove(at index: Int) {
+        if index < 0 || index >= self.length {
+            print("Index out_of_bound.")
+            return
+        }
+
+        if self.length == 0 {
+            print("Nothing to remove.")
+            return
+        }
+
+        if index == 0 {
+            self.removeFirst()
+            return
+        }
+
+        if index == self.length - 1 {
+            self.removeLast()
+            return
+        }
+
+        var temp = self.head
+        for indx in 0..<index {
+            temp = temp?.next
+        }
+        var before = temp?.prev
+        var after = temp?.next
+        before?.next = after
+        after?.prev = before
+        temp?.prev = nil
+        temp?.next = nil
+        self.length -= 1
+    }
+
     func printList() {
         var temp = self.head
         while(temp != nil) {
@@ -183,6 +248,14 @@ dll.append(2)
 let node = dll.getNode(at: 0)
 //print(node?.value)
 
-dll.setNodeValue(3, at: 1)
+// set
+dll.setNodeValue(2, at: 1)
+dll.setNodeValue(3, at: 2)
+
+// insert
+dll.insert(1, at: 1)
+
+// delete
+dll.remove(at: 3)
 
 dll.printList()
