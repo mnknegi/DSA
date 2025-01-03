@@ -27,7 +27,7 @@ final class HashTable {
         let keyElements = key.map { $0 } // This will convert key string into key's character array as we can't index the key chars inside string using Integer indexes.
         for index in 0..<keyElements.count {
             let ascii = Int(keyElements[index].asciiValue!) // Convert Uint8 ascii value into Int
-            hash = (hash + ascii) * 23 % self.size // this will create hash values between 0 and self.size and 23(prime number) will insure less hash collisions.
+            hash = (hash + ascii * 23) % self.size // this will create hash values between 0 and self.size and 23(prime number) will insure less hash collisions.
         }
         return hash
     }
