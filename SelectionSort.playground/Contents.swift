@@ -11,9 +11,9 @@ func selectionSort(arr: [Int]) {
             }
         }
         if minIndex != index_i {
-            let temp = array[index_i]
-            array[index_i] = array[minIndex]
-            array[minIndex] = temp
+            array[index_i] = array[index_i] + array[minIndex]
+            array[minIndex] = array[index_i] - array[minIndex]
+            array[index_i] = array[index_i] - array[minIndex]
         }
     }
     print(array)
