@@ -47,3 +47,16 @@ maxSubArraySum(array: array2)
 /* Using Kadane’s Algorithm – O(n) Time and O(1) Space */
 // https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/
 
+func maxSubArraySumKadaneApproach(array: [Int]) -> Int {
+    var maxSum = Int.min
+    var currentSum = 0
+
+    for num in array {
+        currentSum += num
+        maxSum = max(maxSum, currentSum)
+        if currentSum < 0 {
+            currentSum = 0
+        }
+    }
+    return maxSum
+}
