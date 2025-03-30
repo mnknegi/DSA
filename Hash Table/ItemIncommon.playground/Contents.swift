@@ -18,11 +18,11 @@ let arr2 = [2, 4, 5]
 
 func itemInCommon() -> Bool {
     var dict: [Int: Bool] = [:]
-    for item in arr1 {
+    for item in arr1 { // O(n)
         dict[item] = true
     }
 
-    for item in arr2 {
+    for item in arr2 { // O(m)
         if let temp = dict[item], temp {
             return true
         }
@@ -31,4 +31,4 @@ func itemInCommon() -> Bool {
 }
 
 itemInCommon()
-/* Time Complexity: O(n) */
+/* Time Complexity: O(n+m) */
