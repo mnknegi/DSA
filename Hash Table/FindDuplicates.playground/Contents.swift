@@ -14,21 +14,16 @@
 let numbers = [1, 2, 3, 4, 4, 5, 5, 6, 7, 8]
 
 func findDuplicates() -> [Int] {
-    var dict: [Int: Int] = [:]
+    var numCount: [Int: Int] = [:]
     for number in numbers {
-        if var numCount = dict[number] {
-            dict[number] = numCount + 1
-        } else {
-            dict[number] = 1
-        }
+        numCount[number, default: 0] += 1
     }
 
     var duplicates: [Int] = []
-    for (key, value) in dict {
-        if value > 1 {
-            duplicates.append(key)
-        }
+    for (number, count) in numCount where count > 1 {
+        duplicates.append(number)
     }
+
     return duplicates
 }
 
