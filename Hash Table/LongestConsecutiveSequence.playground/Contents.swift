@@ -10,6 +10,8 @@
  Output Length: 4
  */
 
+/* Level: 5 */
+
 let numbers = [2, 1, 6, 9, 4, 3]
 
 func longestConsecutiveSequence() -> Int {
