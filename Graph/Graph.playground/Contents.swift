@@ -19,7 +19,7 @@ final class Graph {
      */
     func addVertex(_ vertex: String) -> Bool {
         // Check if adjList already contains this vertex.
-        guard let values = adjList[vertex] else {
+        guard let _ = adjList[vertex] else {
             // if no then add vertex.
             self.adjList[vertex] = []
             return true
@@ -31,35 +31,34 @@ final class Graph {
     // check if both vertices are available
     // insert both vertices to each other.
     func addEdgeBetween(_ vertex1: String, and vertex2: String) -> Bool {
-        if self.adjList[vertex1] != nil && self.adjList[vertex2] != nil {
-            self.adjList[vertex1]?.insert(vertex2)
-            self.adjList[vertex2]?.insert(vertex1)
+        guard let _ = self.adjList[vertex1], let _ = self.adjList[vertex2] else {
+            return false
         }
-        return false
+        self.adjList[vertex1]?.insert(vertex2)
+        self.adjList[vertex2]?.insert(vertex1)
+        return true
     }
 
     // remove edge
     func removeEdgeBetween(_ vertex1: String, and vertex2: String) -> Bool {
-        if adjList[vertex1] != nil && adjList[vertex2] != nil {
-            adjList[vertex1]?.remove(vertex2)
-            adjList[vertex2]?.remove(vertex1)
-            return true
+        guard let _ = self.adjList[vertex1], let _ = self.adjList[vertex2] else {
+            return false
         }
-        return false
+        self.adjList[vertex1]?.remove(vertex2)
+        self.adjList[vertex2]?.remove(vertex1)
+        return true
     }
 
     // remove vertex
     func removeVertex(_ vertex: String) -> Bool {
-        if self.adjList[vertex] != nil {
-            let edges = self.adjList[vertex]!
-            for edge in edges {
-//                self.removeEdgeBetween(vertex, and: edge)
-                self.adjList[edge]?.remove(vertex)
-            }
-            self.adjList.removeValue(forKey: vertex)
-            return true
+        guard let edges = self.adjList[vertex] else {
+            return false
         }
-        return false
+        for edge in edges {
+            self.adjList[edge]?.remove(vertex)
+        }
+        self.adjList.removeValue(forKey: vertex)
+        return true
     }
 
     // print Graph
