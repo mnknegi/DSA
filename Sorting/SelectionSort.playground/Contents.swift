@@ -91,3 +91,5 @@ func selectionSort<T: Comparable>(array: inout [T]) {
 
 var fruits = ["orange", "apple", "banana", "kiwi"]
 selectionSort(array: &fruits)
+
+/* Time Complexity O(n²)*/
