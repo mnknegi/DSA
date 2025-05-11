@@ -61,8 +61,8 @@ final class LinkedList {
     // Similar approach
     func findKthFromEnd(_ position: Int) -> Node? {
 
-        // EC: negative position or index inserted.
-        if position < 0 {
+        // negative position or 0th index inserted(invalid input).
+        if position <= 0 {
             return nil
         }
 
@@ -70,17 +70,14 @@ final class LinkedList {
         var slow = self.head
 
         for indx in 0..<position {
-            if fast == nil { return nil }
+            if fast == nil { return nil } // position is greater than the elements in Linked List.
             fast = fast?.next
         }
 
-        while(fast?.next != nil) {
+        while let node = fast {
             slow = slow?.next
             fast = fast?.next
         }
-
-        // EC: if index is greater then nodes.
-        if fast == nil { return nil }
 
         return slow
     }
@@ -93,6 +90,7 @@ linkedList.append(3)
 linkedList.append(4)
 
 linkedList.findKthFromEnd(-1) // nil
-linkedList.findKthFromEnd(0) // 4
-linkedList.findKthFromEnd(4) // 0
-linkedList.findKthFromEnd(5) // nil
+linkedList.findKthFromEnd(0) // nil
+linkedList.findKthFromEnd(2) // 3
+linkedList.findKthFromEnd(4) // 1
+linkedList.findKthFromEnd(5) // 0
