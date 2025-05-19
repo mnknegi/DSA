@@ -102,7 +102,7 @@ func bubbleSort(array: inout [Int]) {
     let size = array.count
     guard size > 1 else { return }
 
-    for index_i in 0..<size {
+    for index_i in 0..<size - 1 {
         // for index_i in 0..<size - 1 is also acceptable here. This one is slightly optimized.
         // In first case for the last iteration of outer loop the inner loop will never execute as the condition will become 0..<0.
 
