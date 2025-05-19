@@ -71,7 +71,8 @@
 
  - We loop through the array multiple times.
  - Each pass "bubbles" the largest unsorted element to the end.
- - We optimized by reducing the range(n - i -1) each time.
+ - Outer loop run from 0..< size (or 0..<size - 1(optimized) both acceptable).
+ - We optimized by reducing the range(n - i - 1) each time.
  - Break early if no swap happens(the array is already sorted).
  */
 
@@ -102,6 +103,9 @@ func bubbleSort(array: inout [Int]) {
     guard size > 1 else { return }
 
     for index_i in 0..<size {
+        // for index_i in 0..<size - 1 is also acceptable here. This one is slightly optimized.
+        // In first case for the last iteration of outer loop the inner loop will never execute as the condition will become 0..<0.
+
         var swapped = false
 
         for index_j in 0..<size - index_i - 1 {
