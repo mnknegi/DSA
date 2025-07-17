@@ -32,15 +32,15 @@ func findSecondLargest(arr: [Int]) -> Int {
         return -1
     }
 
-    var largest = arr[0]
+    var largest = -1
     var secondLargest = -1
 
     for currentItem in arr {
-        if currentItem < largest && currentItem > secondLargest {
-            secondLargest = currentItem
-        } else if currentItem > largest {
+        if currentItem > largest {
             secondLargest = largest
             largest = currentItem
+        } else if currentItem < largest && currentItem > secondLargest {
+            secondLargest = currentItem
         }
     }
 
