@@ -61,7 +61,22 @@ class LinkedList:
     del temp
     del pre
 
+
   # REMOVE_FIRST
+  def remove_first(self):
+    if self.lenght == 0:
+      return
+    
+    if self.lenght == 1:
+      self.head = None
+      self.tail = None
+    else:
+      temp = self.head
+      self.head = self.head.next
+      del temp
+
+    self.lenght -= 1  
+
 
   # GET
 
@@ -96,5 +111,9 @@ linked_list.prepend(0)
 # REMOVE_LAST [time complexity: O(n)]
 linked_list.remove_last()
 linked_list.remove_last()
+
+# REMOVE_FIRST [time complexity: O(1)]
+linked_list.remove_first()
+linked_list.remove_first()
 
 linked_list.print_ll()
