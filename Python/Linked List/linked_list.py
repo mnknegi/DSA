@@ -103,6 +103,20 @@ class LinkedList:
       temp.value = value
 
   # INSERT
+  def insert(self, value, index):
+    if index < 0 or index > self.lenght:
+      return
+    
+    if index == 0:
+      self.prepend(value)
+    elif index == self.lenght:
+      self.append(value)
+    else:
+      new_node = Node(value)
+      temp = self.get_node(index - 1)
+      new_node.next = temp.next
+      temp.next = new_node
+
 
   # DELETE
 
@@ -143,11 +157,13 @@ node_value = linked_list.get_node(0)
 if node_value != None:
   print(node_value.value)
 
-# SET_NODE
+# SET_NODE [time complexity: O(n)]
 linked_list.set_node(value=0, index=0) # before: 2 -> 3 -> nil,  after: 0 -> 3 -> nil
 linked_list.set_node(value=1, index=1) # before: 0 -> 3 -> nil,  after: 0 -> 1 -> nil
 
-
+# INSERT [time complexity: O(n)]
+linked_list.insert(3, 2)
+linked_list.insert(2, 2)
 
 # PRINT
 linked_list.print_ll()
