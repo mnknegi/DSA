@@ -1,0 +1,100 @@
+
+class Node:
+  
+  def __init__(self, value):
+    self.value = value
+    self.next = None
+
+class LinkedList:
+
+  def __init__(self, value):
+    new_node = Node(value)
+    self.head = new_node
+    self.tail = new_node
+    self.lenght = 1
+
+
+  # APPEND
+  def append(self, value):
+    new_node = Node(value)
+    if self.lenght == 0:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      self.tail.next = new_node
+      self.tail = new_node
+    self.lenght += 1
+      
+
+  # PREPEND
+  def prepend(self, value):
+    new_node = Node(value)
+    if self.lenght == 0:
+      self.head = new_node
+      self.tail = new_node
+    else:
+      new_node.next = self.head
+      self.head = new_node
+    self.lenght += 1
+
+
+  # REMOVE_LAST
+  def remove_last(self):
+    if self.lenght == 0:
+      return
+    
+    temp = self.head
+    pre = self.head
+
+    while temp.next != None:
+      pre = temp
+      temp = temp.next
+    
+    self.tail = pre
+    self.tail.next = None # detach the last node.
+    self.lenght -= 1
+
+    if self.lenght == 0:
+      self.head = None
+      self.tail = None
+
+    del temp
+    del pre
+
+  # REMOVE_FIRST
+
+  # GET
+
+  # SET
+
+  # INSERT
+
+  # DELETE
+
+  # REVERSE
+
+  # PRINT
+  def print_ll(self):
+    temp = self.head
+    while temp != None:
+      print(f"{temp.value}", end=" -> ")
+      temp = temp.next
+    print("nil")
+
+# INSTANTIATE
+linked_list = LinkedList(1)
+
+# APPEND [time complexity: O(1)]
+linked_list.append(2)
+linked_list.append(3)
+linked_list.append(4)
+linked_list.append(5)
+
+# PREPEND [time complexity: O(1)]
+linked_list.prepend(0)
+
+# REMOVE_LAST [time complexity: O(n)]
+linked_list.remove_last()
+linked_list.remove_last()
+
+linked_list.print_ll()
