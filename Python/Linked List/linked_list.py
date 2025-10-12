@@ -116,11 +116,46 @@ class LinkedList:
       temp = self.get_node(index - 1)
       new_node.next = temp.next
       temp.next = new_node
+      self.lenght += 1
 
 
   # DELETE
+  def delete(self, index):
+    if index < 0 or index >= self.lenght or self.lenght == 0:
+      return
+    
+    if index == 0:
+      self.remove_first()
+      return
+    
+    if index == self.lenght - 1:
+      self.remove_last()
+      return
+    
+    pre = self.get_node(index - 1)
+    temp = self.get_node(index)
+    pre.next = temp.next
+    self.lenght -= 1
+    del temp
 
   # REVERSE
+  def reverse(self):
+    if self.lenght == 0 or self.lenght == 1:
+      return
+    
+    before = None
+    temp = self.head
+    after = self.head.next
+
+    self.head = self.tail
+    self.tail = temp
+
+    while temp != None:
+      after = temp.next
+      temp.next = before
+      before = temp
+      temp = after
+
 
   # PRINT
   def print_ll(self):
@@ -164,6 +199,12 @@ linked_list.set_node(value=1, index=1) # before: 0 -> 3 -> nil,  after: 0 -> 1 -
 # INSERT [time complexity: O(n)]
 linked_list.insert(3, 2)
 linked_list.insert(2, 2)
+
+# DELETE [time complexity: O(n)]
+linked_list.delete(0)
+
+# REVERSE
+linked_list.reverse()
 
 # PRINT
 linked_list.print_ll()
