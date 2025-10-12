@@ -78,7 +78,7 @@ class LinkedList:
     self.lenght -= 1  
 
 
-  # GET
+  # GET_NODE
   def get_node(self, index):
     if self.lenght == 0 or index >= self.lenght or index < 0:
       return
@@ -92,7 +92,15 @@ class LinkedList:
       return temp
 
 
-  # SET
+  # SET_NODE
+  def set_node(self, value, index):
+    new_node = Node(value)
+    if index < 0 or index >= self.lenght:
+      return
+    
+    temp = self.get_node(index)
+    if temp is not None:
+      temp.value = value
 
   # INSERT
 
@@ -128,14 +136,18 @@ linked_list.remove_last()
 linked_list.remove_first()
 linked_list.remove_first()
 
-# GET [time complexity: O(n)]
+# GET_NODE [time complexity: O(n)]
 node_value = linked_list.get_node(-1)
 node_value = linked_list.get_node(2)
 node_value = linked_list.get_node(0)
 if node_value != None:
   print(node_value.value)
 
-# SET
+# SET_NODE
+linked_list.set_node(value=0, index=0) # before: 2 -> 3 -> nil,  after: 0 -> 3 -> nil
+linked_list.set_node(value=1, index=1) # before: 0 -> 3 -> nil,  after: 0 -> 1 -> nil
+
+
 
 # PRINT
 linked_list.print_ll()
