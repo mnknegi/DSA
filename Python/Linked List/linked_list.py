@@ -79,6 +79,18 @@ class LinkedList:
 
 
   # GET
+  def get_node(self, index):
+    if self.lenght == 0 or index >= self.lenght or index < 0:
+      return
+
+    if self.lenght == 1:
+      return self.head
+    else:
+      temp = self.head
+      for _ in range(index):
+        temp = temp.next
+      return temp
+
 
   # SET
 
@@ -116,4 +128,14 @@ linked_list.remove_last()
 linked_list.remove_first()
 linked_list.remove_first()
 
+# GET [time complexity: O(n)]
+node_value = linked_list.get_node(-1)
+node_value = linked_list.get_node(2)
+node_value = linked_list.get_node(0)
+if node_value != None:
+  print(node_value.value)
+
+# SET
+
+# PRINT
 linked_list.print_ll()
