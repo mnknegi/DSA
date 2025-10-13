@@ -1,10 +1,5 @@
 
-class Node:
-  
-  def __init__(self, value):
-    self.value = value
-    self.next = None
-
+from node import Node
 class LinkedList:
 
   def __init__(self, value):
@@ -165,46 +160,48 @@ class LinkedList:
       temp = temp.next
     print("nil")
 
-# INSTANTIATE
-linked_list = LinkedList(1)
+if __name__ == "__main__":
 
-# APPEND [time complexity: O(1)]
-linked_list.append(2)
-linked_list.append(3)
-linked_list.append(4)
-linked_list.append(5)
+  # INSTANTIATE
+  linked_list = LinkedList(1)
 
-# PREPEND [time complexity: O(1)]
-linked_list.prepend(0)
+  # APPEND [time complexity: O(1)]
+  linked_list.append(2)
+  linked_list.append(3)
+  linked_list.append(4)
+  linked_list.append(5)
 
-# REMOVE_LAST [time complexity: O(n)]
-linked_list.remove_last()
-linked_list.remove_last()
+  # PREPEND [time complexity: O(1)]
+  linked_list.prepend(0)
 
-# REMOVE_FIRST [time complexity: O(1)]
-linked_list.remove_first()
-linked_list.remove_first()
+  # REMOVE_LAST [time complexity: O(n)]
+  linked_list.remove_last()
+  linked_list.remove_last()
 
-# GET_NODE [time complexity: O(n)]
-node_value = linked_list.get_node(-1)
-node_value = linked_list.get_node(2)
-node_value = linked_list.get_node(0)
-if node_value != None:
-  print(node_value.value)
+  # REMOVE_FIRST [time complexity: O(1)]
+  linked_list.remove_first()
+  linked_list.remove_first()
 
-# SET_NODE [time complexity: O(n)]
-linked_list.set_node(value=0, index=0) # before: 2 -> 3 -> nil,  after: 0 -> 3 -> nil
-linked_list.set_node(value=1, index=1) # before: 0 -> 3 -> nil,  after: 0 -> 1 -> nil
+  # GET_NODE [time complexity: O(n)]
+  node_value = linked_list.get_node(-1)
+  node_value = linked_list.get_node(2)
+  node_value = linked_list.get_node(0)
+  if node_value != None:
+    print(node_value.value)
 
-# INSERT [time complexity: O(n)]
-linked_list.insert(3, 2)
-linked_list.insert(2, 2)
+  # SET_NODE [time complexity: O(n)]
+  linked_list.set_node(value=0, index=0) # before: 2 -> 3 -> nil,  after: 0 -> 3 -> nil
+  linked_list.set_node(value=1, index=1) # before: 0 -> 3 -> nil,  after: 0 -> 1 -> nil
 
-# DELETE [time complexity: O(n)]
-linked_list.delete(0)
+  # INSERT [time complexity: O(n)]
+  linked_list.insert(3, 2)
+  linked_list.insert(2, 2)
 
-# REVERSE
-linked_list.reverse()
+  # DELETE [time complexity: O(n)]
+  linked_list.delete(0)
 
-# PRINT
-linked_list.print_ll()
+  # REVERSE
+  linked_list.reverse()
+
+  # PRINT
+  linked_list.print_ll()
