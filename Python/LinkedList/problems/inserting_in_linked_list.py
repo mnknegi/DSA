@@ -60,8 +60,30 @@ def insert_after(head, value, key):
     
   return head
 
-# AT A SPECIFIC POSITIONdef
+# AT A SPECIFIC POSITION
+def insert(head, value, index):
+  
+  new_node = Node(value)
 
+  if head is None:
+    return new_node
+  
+  if index == 0:
+    new_node.next = head
+    return new_node
+  
+  pre = head
+  temp = head
+  for _ in range(index):
+    if temp is None:
+      return head
+    pre = temp
+    temp = temp.next
+  new_node.next = pre.next
+  pre.next = new_node
+
+  return head
+  
 
 # AT THE END OF THE LINKED LIST
 def append(head, value):
@@ -98,5 +120,7 @@ if __name__ == "__main__":
   head = insert_after(head, value=5, key=4)
 
   head = append(head, 7)
+  head = insert(head, value=-1, index=0)
+  head = insert(head, value=9, index=9)
 
   print_linked_list(head)
