@@ -7,7 +7,12 @@ class Node:
 
 # AT THE FRONT OF THE LINKED LIST
 def prepend(head, value):
+
   new_node = Node(value)
+
+  if head is None:
+    return new_node
+
   new_node.next = head
   return new_node
 
@@ -55,11 +60,23 @@ def insert_after(head, value, key):
     
   return head
 
-# AT A SPECIFIC POSITION
+# AT A SPECIFIC POSITIONdef
 
 
 # AT THE END OF THE LINKED LIST
+def append(head, value):
+  
+  new_node = Node(value)
 
+  if head is None:
+    return new_node
+  
+  temp = head
+  while temp.next is not None:
+    temp = temp.next
+  temp.next = new_node
+
+  return head
 
 # PRINT LINKED LIST
 def print_linked_list(head):
@@ -79,5 +96,7 @@ if __name__ == "__main__":
   head = prepend(head, 0)
   head = insert_before(head, value=3, key=4)
   head = insert_after(head, value=5, key=4)
+
+  head = append(head, 7)
 
   print_linked_list(head)
