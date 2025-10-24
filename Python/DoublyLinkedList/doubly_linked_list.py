@@ -122,8 +122,22 @@ class DoublyLinkedList:
 
     
   # DELETE
-  def delete(self, value, index):
-    pass
+  def delete(self, index):
+    
+    if index < 0 or index >= self.length:
+      return
+    
+    if index == 0:
+      self.remove_first()
+    elif index == self.length - 1:
+      self.remove_last()
+    else:
+      after_node = self.get_node(index)
+      before_node = after_node.prev
+      before_node.next = after_node.next
+      after_node.next.prev = before_node
+      self.length -= 1
+      del after_node
 
   # PRINT
   def print_doubly_linked_list(self):
@@ -177,6 +191,11 @@ if __name__ == "__main__":
   # INSERT
   doubly_linked_list.insert(4, 3)
   doubly_linked_list.insert(3, 3)
+
+  # DELETE
+  doubly_linked_list.delete(2)
+  doubly_linked_list.delete(0)
+  doubly_linked_list.delete(2)
 
   # PRINT
   doubly_linked_list.print_doubly_linked_list()
