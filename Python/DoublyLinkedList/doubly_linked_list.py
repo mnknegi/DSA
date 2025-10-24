@@ -99,12 +99,28 @@ class DoublyLinkedList:
       temp = temp.next
       
     temp.value = value
-    return self.head
 
   # INSERT
   def insert(self, value, index):
-    pass
+    
+    if index < 0 or index > self.length:
+      return
+    
+    if index == 0:
+      self.prepend(value)
+    elif index == self.length:
+      self.append(value)
+    else:
+      new_node = Node(value)
+      after_node = self.get_node(index)
+      before_node = after_node.prev
+      before_node.next = new_node
+      new_node.prev = before_node
+      after_node.prev = new_node
+      new_node.next = after_node
+      self.length += 1
 
+    
   # DELETE
   def delete(self, value, index):
     pass
@@ -157,6 +173,10 @@ if __name__ == "__main__":
   doubly_linked_list.append(2)
   doubly_linked_list.append(2)
   doubly_linked_list.set_node(1, 1)
+
+  # INSERT
+  doubly_linked_list.insert(4, 3)
+  doubly_linked_list.insert(3, 3)
 
   # PRINT
   doubly_linked_list.print_doubly_linked_list()
